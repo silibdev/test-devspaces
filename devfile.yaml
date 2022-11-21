@@ -2,3 +2,24 @@ schemaVersion: 2.1.0
 metadata:
   name: test-devspaces
   namespace: fsiliberto-codeready
+projects:
+  - git:
+      checkoutFrom:
+        revision: master
+      remotes:
+        origin: 'http://10.10.30.186:7990/scm/ccgtes/test-devspaces.git'
+    name: test-devspaces
+components:
+  - container:
+      args:
+        - infinity
+      command:
+        - sleep
+      image: 'registry.redhat.io/ubi8/nodejs-14:latest'
+      memoryLimit: 4Gi
+      mountSources: true
+      sourceMapping: /projects
+      volumeMounts:
+        - name: npm
+          path: /home/user/.npm
+    name: nodejs-runtime
