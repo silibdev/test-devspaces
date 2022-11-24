@@ -1,0 +1,20 @@
+schemaVersion: 2.1.0
+metadata:
+  name: test-devspaces
+  namespace: fsiliberto-codeready
+projects:
+  - name: bbbash
+    zip:
+      location: 'https://eclipse-che.github.io/che-devfile-registry/7.52.0/resources/v2/bash.zip'
+components: []
+commands:
+  - exec:
+      commandLine: |
+        node main.js
+      component: tools
+      group:
+        isDefault: true
+        kind: run
+      label: Run main.js script
+      workingDir: '${PROJECT_SOURCE}'
+    id: run-main-script
